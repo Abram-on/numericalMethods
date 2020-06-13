@@ -2,23 +2,26 @@ import java.lang.reflect.Method
 import kotlin.math.round
 import kotlin.Any
 
-abstract class IntegralBase(private val workDirPath: String, private val userFunClassName: String, private val userFunName: String, private val methodIn: Method? = null, private val onLineLibIn: Any? = null){
+abstract class IntegralBase(private val workDirPath: String, private val userFunClassName: String, private val userFunName: String, methodIn: Method? = null, onLineLibIn: Any? = null){
     var rndToSign: Double = 1000000.0
     val y: HashMap<Int, StepsValues> = HashMap()
     var messages: String = ""
     var result: Double? = null
 
-    private var method : Method
-    private var onLineLib: Any
+    private var method : Method?
+    private var onLineLib: Any?
 
     init {
         if (methodIn == null) {
             val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
-            val param = Double::class.java
-            val loadClass = ml.findClass(userFunClassName)
-            val constructor = loadClass.constructors.first()
-            onLineLib = constructor.newInstance()
-            method = loadClass.getMethod(userFunName, param)
+            loadOnLineLib()
+            method = ml.method
+            onLineLib = ml.onLineLib
+//            val param = Double::class.java
+//            val loadClass = ml.findClass(userFunClassName)
+//            val constructor = loadClass.constructors.first()
+//            onLineLib = constructor.newInstance()
+//            method = loadClass.getMethod(userFunName, param)
         } else {
             method = methodIn
             onLineLib = onLineLibIn!!
@@ -34,7 +37,7 @@ abstract class IntegralBase(private val workDirPath: String, private val userFun
     }
 
     fun callUserFun(arg: Any): Double {
-        return method.invoke(onLineLib, arg).toString().toDouble()
+        return method!!.invoke(onLineLib, arg).toString().toDouble()
     }
 
     fun arrayPrint(firstVal: Int = 0, lastVal: Int = 0){
@@ -54,6 +57,11 @@ abstract class IntegralBase(private val workDirPath: String, private val userFun
                 i++
             }
         }
+    }
+
+    private fun loadOnLineLib(){
+        val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
+        ml.loadOnLineLib(userFunClassName, userFunName)
     }
 
 }

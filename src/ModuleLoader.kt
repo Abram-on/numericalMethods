@@ -1,9 +1,23 @@
 import java.io.*
+import java.lang.reflect.Method
 
 class ModuleLoader(private val pathtobin: String, parent: ClassLoader?) : ClassLoader(parent) {
 
+    var method: Method? = null
+    var onLineLib: Any? = null
+
+    fun loadOnLineLib(userFunClassName: String, userFunName: String){
+        val param = Double::class.java
+        val loadClass = this.findClass(userFunClassName)
+        val constructor = loadClass.constructors.first()
+        onLineLib = constructor.newInstance()
+        method = loadClass.getMethod(userFunName, param)
+
+    }
+
+
     @Throws(ClassNotFoundException::class)
-    public override fun findClass(className: String): Class<*> {
+    override fun findClass(className: String): Class<*> {
         return try {
             val b = fetchClassFromFS("$pathtobin$className.class")
             println("$pathtobin$className.class")

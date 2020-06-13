@@ -3,7 +3,7 @@ fun main(args: Array<String>) {
 
 
     //val integrals: Integrals = Integrals("2.0 * pow(x, 2.0) + 3.0 * x + 5.1","C:\\IDEADev\\numericalMethod\\")
-    val integrals: Integrals = Integrals("sqrt(1.0+2.0*pow(x,2.0) - pow(x,3.0))", "C:\\IDEADev\\numericalMethod\\")
+    val integrals = Integrals("sqrt(1.0+2.0*pow(x,2.0) - pow(x,3.0))", "C:\\IDEADev\\numericalMethod\\")
 
     integrals.simpson.simpsonOneStep(1.2, 2.0, 0.000701)
 //    integrals.simpson.simpsonOneStep(10.0, 100.0, 0.00002)
@@ -65,6 +65,9 @@ fun main(args: Array<String>) {
     integrals.middleRect.result = null
     println("-----------------------------------------------------")
 
+    val rectUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
+
+    integrals.rect.setRectUserFun(rectUserFun)
 
     integrals.rect.rectOneStep(1.2, 2.0, 0.000701)
 //    integrals.rect.rectOneStep(10.0, 100.0, 0.00002)
