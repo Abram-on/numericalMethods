@@ -8,15 +8,13 @@ abstract class IntegralBase(private val workDirPath: String, private val userFun
     var messages: String = ""
     var result: Double? = null
 
-    private var method : Method?
-    private var onLineLib: Any?
+    private var method : Method? = null
+    private var onLineLib: Any? = null
 
     init {
         if (methodIn == null) {
-            val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
+            //val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
             loadOnLineLib()
-            method = ml.method
-            onLineLib = ml.onLineLib
 //            val param = Double::class.java
 //            val loadClass = ml.findClass(userFunClassName)
 //            val constructor = loadClass.constructors.first()
@@ -62,6 +60,9 @@ abstract class IntegralBase(private val workDirPath: String, private val userFun
     private fun loadOnLineLib(){
         val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
         ml.loadOnLineLib(userFunClassName, userFunName)
+        method = ml.method
+        onLineLib = ml.onLineLib
+
     }
 
 }

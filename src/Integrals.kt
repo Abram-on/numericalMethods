@@ -46,8 +46,6 @@ class Integrals(userFun: String? = null, private val workDirPath: String) {
             println(compileMessage)
             return -3
         }
-
-        //classLoad()
         return 0
     }
 
@@ -97,13 +95,6 @@ class Integrals(userFun: String? = null, private val workDirPath: String) {
         ml.loadOnLineLib(userFunClassName, userFunName)
         method = ml.method
         onLineLib = ml.onLineLib
-
-//        val param = Double::class.java
-//        val loadClass = ml.findClass(userFunClassName)
-//        val constructor = loadClass.constructors.first()
-//        onLineLib = constructor.newInstance()
-//        method = loadClass.getMethod(userFunName, param)
-
     }
 }
 
