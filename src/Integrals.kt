@@ -1,8 +1,4 @@
-import java.io.BufferedReader
-import java.io.File
-import java.io.InputStreamReader
 import java.lang.reflect.Method
-import java.nio.charset.Charset
 
 class Integrals( private val userFun: String? = null, private val workDirPath: String) {
 
