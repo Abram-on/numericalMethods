@@ -2,31 +2,23 @@ import java.lang.reflect.Method
 import kotlin.math.round
 import kotlin.Any
 
-abstract class IntegralBase(private val workDirPath: String, private val userFunClassName: String, private val userFunName: String, methodIn: Method? = null, onLineLibIn: Any? = null){
+abstract class IntegralBase(protected var workDirPath: String, protected var userFunClassName: String, protected var userFunName: String, methodIn: Method? = null, onLineLibIn: Any? = null){
     var rndToSign: Double = 1000000.0
     val y: HashMap<Int, StepsValues> = HashMap()
     var messages: String = ""
     var result: Double? = null
 
-    private var method : Method? = null
-    private var onLineLib: Any? = null
+    protected var method : Method? = null
+    protected var onLineLib: Any? = null
 
     init {
         if (methodIn == null) {
-            //val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
             loadOnLineLib()
-//            val param = Double::class.java
-//            val loadClass = ml.findClass(userFunClassName)
-//            val constructor = loadClass.constructors.first()
-//            onLineLib = constructor.newInstance()
-//            method = loadClass.getMethod(userFunName, param)
         } else {
             method = methodIn
             onLineLib = onLineLibIn!!
-
         }
     }
-
 
     class StepsValues(val x: Double, var fx: Double, var k: Double, var step: Double)
 
@@ -57,7 +49,7 @@ abstract class IntegralBase(private val workDirPath: String, private val userFun
         }
     }
 
-    private fun loadOnLineLib(){
+    protected fun loadOnLineLib(){
         val ml = ModuleLoader(workDirPath, this.javaClass.classLoader)
         ml.loadOnLineLib(userFunClassName, userFunName)
         method = ml.method

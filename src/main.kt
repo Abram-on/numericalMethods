@@ -69,8 +69,8 @@ fun main(args: Array<String>) {
 
     integrals.rect.setRectUserFun(rectUserFun)
 
-    integrals.rect.rectOneStep(1.2, 2.0, 0.000701)
-//    integrals.rect.rectOneStep(10.0, 100.0, 0.00002)
+    //integrals.rect.rectOneStep(1.2, 2.0, 0.000701)
+    integrals.rect.rectOneStep(10.0, 100.0, 0.00002)
     //integrals.rect.arrayPrint()
     println(integrals.rect.messages)
     integrals.rect.messages = ""
@@ -79,9 +79,8 @@ fun main(args: Array<String>) {
     println("-----------------------------------------------------")
 
 
-    integrals.rect.rectSteps(1.2, 2.0, 1142)
-    //integrals.rect.rndToSign = 100000000000000000000.0
-//    integrals.rect.rectSteps(10.0, 100.0, 4500000)
+//    integrals.rect.rectSteps(1.2, 2.0, 1142)
+    integrals.rect.rectSteps(10.0, 100.0, 4500000)
     //integrals.rect.arrayPrint( 5, 5 )
     println(integrals.rect.messages)
     integrals.rect.messages = ""

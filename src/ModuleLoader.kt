@@ -6,15 +6,13 @@ class ModuleLoader(private val pathtobin: String, parent: ClassLoader?) : ClassL
     var method: Method? = null
     var onLineLib: Any? = null
 
-    fun loadOnLineLib(userFunClassName: String, userFunName: String){
+    fun loadOnLineLib(userFunClassName: String, userFunName: String)  {
         val param = Double::class.java
         val loadClass = this.findClass(userFunClassName)
         val constructor = loadClass.constructors.first()
         onLineLib = constructor.newInstance()
         method = loadClass.getMethod(userFunName, param)
-
     }
-
 
     @Throws(ClassNotFoundException::class)
     override fun findClass(className: String): Class<*> {

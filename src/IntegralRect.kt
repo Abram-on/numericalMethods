@@ -1,18 +1,25 @@
 import java.lang.reflect.Method
 
 class IntegralRect(workDirPath: String, userFunClassName: String, userFunName: String,
-                        methodIn: Method? = null, onLineLibIn: Any? = null
+                   methodIn: Method? = null, onLineLibIn: Any? = null
                     ) : IntegralBase(workDirPath, userFunClassName, userFunName, methodIn, onLineLibIn) {
 
     private var rectUserFun: String? = null
     private val rectUserFunClassName: String = "RectOnLineLib"
-    private val rectUserFunFileName: String = "RectLineLib.kt"
-    private val rectUserFunName: String = "RectUserFun"
+    private val rectUserFunFileName: String = "RectOnLineLib.kt"
+    private val rectUserFunName: String = "userFun"
     private var rectCompileMessage: String = ""
-
 
     fun setRectUserFun(rectUserFunIn: String?) {
         this.rectUserFun = rectUserFunIn
+        val cuf = CompileUserFun(rectUserFun!!, workDirPath, rectUserFunFileName, rectUserFunClassName)
+        cuf.compile()
+        rectCompileMessage = cuf.compileMessage
+
+        userFunClassName = rectUserFunClassName
+        userFunName = rectUserFunName
+
+        loadOnLineLib()
     }
 
     fun rectSteps(A: Double, B: Double, cntSteps: Int) {
