@@ -15,6 +15,9 @@ class IntegralTrapezes(workDirPath: String, userFunClassName: String, userFunNam
         val cuf = CompileUserFun(trapezesUserFun!!, workDirPath, trapezesUserFunFileName, trapezesUserFunClassName)
         cuf.compile()
         trapezesCompileMessage = cuf.compileMessage
+        if (trapezesCompileMessage != "")  println(trapezesCompileMessage)
+
+        trapezesCompileMessage = cuf.compileMessage
 
         userFunClassName = trapezesUserFunClassName
         userFunName = trapezesUserFunName

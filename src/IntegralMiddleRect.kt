@@ -15,6 +15,7 @@ class IntegralMiddleRect(workDirPath: String, userFunClassName: String, userFunN
         val cuf = CompileUserFun(middleRectUserFun!!, workDirPath, middleRectUserFunFileName, middleRectUserFunClassName)
         cuf.compile()
         middleRectCompileMessage = cuf.compileMessage
+        if (middleRectCompileMessage != "")  println(middleRectCompileMessage)
 
         userFunClassName = middleRectUserFunClassName
         userFunName = middleRectUserFunName

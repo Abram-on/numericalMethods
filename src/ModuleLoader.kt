@@ -18,7 +18,7 @@ class ModuleLoader(private val pathtobin: String, parent: ClassLoader?) : ClassL
     override fun findClass(className: String): Class<*> {
         return try {
             val b = fetchClassFromFS("$pathtobin$className.class")
-            println("$pathtobin$className.class")
+           // println("$pathtobin$className.class")
          //return loadClass(className)
 
         return defineClass(className, b, 0, b.size)

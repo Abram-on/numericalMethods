@@ -15,6 +15,7 @@ class IntegralSimpson(workDirPath: String, userFunClassName: String, userFunName
         val cuf = CompileUserFun(simpsonUserFun!!, workDirPath, simpsonUserFunFileName, simpsonUserFunClassName)
         cuf.compile()
         simpsonCompileMessage = cuf.compileMessage
+        if (simpsonCompileMessage != "")  println(simpsonCompileMessage)
 
         userFunClassName = simpsonUserFunClassName
         userFunName = simpsonUserFunName

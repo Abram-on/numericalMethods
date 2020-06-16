@@ -8,9 +8,9 @@ class CompileUserFun(private val userFun: String, private val workDirPath: Strin
     var compileMessage: String =""
 
     fun compile(): Int{
-        if (userFunClassFileWrite(userFun) != 0) {
-            println("Ошибка записи в файл")
-            return -2
+        if (userFunClassFileWrite(userFun) == 1) {
+            compileMessage += "UserFun не изменилась, комиляция отменена\n"
+            return 1
         }
 
         if (compileUserFun( workDirPath + userFunFileName) != 0) {
@@ -38,9 +38,11 @@ class CompileUserFun(private val userFun: String, private val workDirPath: Strin
     private fun userFunClassFileWrite(strFunIn: String): Int {
         val strFun = strFunIn.trim()
         val file = File(workDirPath + userFunFileName)
-
+        val s = file.readText(Charsets.UTF_8)
+        val sBuild = userFunClassBuild(strFun)
+        if (s == sBuild) return 1
         if (file.exists()) file.delete()
-        file.writeText(userFunClassBuild(strFun), Charset.defaultCharset())
+        file.writeText(sBuild, Charsets.UTF_8)
 
         return 0
     }

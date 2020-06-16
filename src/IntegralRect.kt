@@ -15,6 +15,7 @@ class IntegralRect(workDirPath: String, userFunClassName: String, userFunName: S
         val cuf = CompileUserFun(rectUserFun!!, workDirPath, rectUserFunFileName, rectUserFunClassName)
         cuf.compile()
         rectCompileMessage = cuf.compileMessage
+        if (rectCompileMessage != "")  println(rectCompileMessage)
 
         userFunClassName = rectUserFunClassName
         userFunName = rectUserFunName

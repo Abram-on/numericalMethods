@@ -31,10 +31,10 @@ fun main(args: Array<String>) {
 
     val trapezesUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
 
-//    integrals. trapezes.setTrapezesUserFun(trapezesUserFun)
+    integrals.trapezes.setTrapezesUserFun(trapezesUserFun)
 
-    integrals.trapezes.trapezesOneStep(1.2, 2.0, 0.000701)
-//    integrals.trapezes.trapezesOneStep(10.0, 100.0, 0.00002)
+//    integrals.trapezes.trapezesOneStep(1.2, 2.0, 0.000701)
+    integrals.trapezes.trapezesOneStep(10.0, 100.0, 0.00002)
     //integrals.trapezes.arrayPrint()
     println(integrals.trapezes.messages)
     integrals.trapezes.messages = ""
@@ -44,8 +44,8 @@ fun main(args: Array<String>) {
 
 
     //integrals.trapezes.rndToSign = 100000000000000000000.0
-    integrals.trapezes.trapezesSteps(1.2, 2.0, 1142)
-    //integrals.trapezes.trapezesSteps(10.0, 100.0, 4500000)
+//    integrals.trapezes.trapezesSteps(1.2, 2.0, 1142)
+    integrals.trapezes.trapezesSteps(10.0, 100.0, 4500000)
     //integrals.trapezes.arrayPrint( lastVal = 10 )
     println(integrals.trapezes.messages)
     integrals.trapezes.messages = ""

@@ -22,6 +22,7 @@ class Integrals( private val userFun: String? = null, private val workDirPath: S
             val cuf = CompileUserFun(userFun, workDirPath, userFunFileName, userFunClassName)
             cuf.compile()
             compileMessage = cuf.compileMessage
+            println(compileMessage)
             //загрузка библиотеки OnLineLib, если задана общая userFun для всех интегралов
             loadOnLineLib()
         }
