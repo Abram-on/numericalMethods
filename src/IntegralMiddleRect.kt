@@ -4,6 +4,24 @@ class IntegralMiddleRect(workDirPath: String, userFunClassName: String, userFunN
                             methodIn: Method? = null, onLineLibIn: Any? = null
                          ) : IntegralBase(workDirPath, userFunClassName, userFunName, methodIn, onLineLibIn) {
 
+    private var middleRectUserFun: String? = null
+    private val middleRectUserFunClassName: String = "MiddleRectOnLineLib"
+    private val middleRectUserFunFileName: String = "MiddleRectOnLineLib.kt"
+    private val middleRectUserFunName: String = "userFun"
+    private var middleRectCompileMessage: String = ""
+
+    fun setMiddleRectUserFun(rectUserFunIn: String?) {
+        this.middleRectUserFun = rectUserFunIn
+        val cuf = CompileUserFun(middleRectUserFun!!, workDirPath, middleRectUserFunFileName, middleRectUserFunClassName)
+        cuf.compile()
+        middleRectCompileMessage = cuf.compileMessage
+
+        userFunClassName = middleRectUserFunClassName
+        userFunName = middleRectUserFunName
+
+        loadOnLineLib()
+    }
+
     fun middleRectSteps(A: Double, B: Double, cntSteps: Int) {
         y.clear()
 

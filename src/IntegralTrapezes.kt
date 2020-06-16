@@ -4,6 +4,24 @@ class IntegralTrapezes(workDirPath: String, userFunClassName: String, userFunNam
                             methodIn: Method? = null, onLineLibIn: Any? = null
                        ) : IntegralBase(workDirPath, userFunClassName, userFunName, methodIn, onLineLibIn) {
 
+    private var trapezesUserFun: String? = null
+    private val trapezesUserFunClassName: String = "TrapezesOnLineLib"
+    private val trapezesUserFunFileName: String = "TrapezesOnLineLib.kt"
+    private val trapezesUserFunName: String = "userFun"
+    private var trapezesCompileMessage: String = ""
+
+    fun setTrapezesUserFun(rectUserFunIn: String?) {
+        this.trapezesUserFun = rectUserFunIn
+        val cuf = CompileUserFun(trapezesUserFun!!, workDirPath, trapezesUserFunFileName, trapezesUserFunClassName)
+        cuf.compile()
+        trapezesCompileMessage = cuf.compileMessage
+
+        userFunClassName = trapezesUserFunClassName
+        userFunName = trapezesUserFunName
+
+        loadOnLineLib()
+    }
+
     fun trapezesSteps(A: Double, B: Double, cntSteps: Int) {
         y.clear()
 

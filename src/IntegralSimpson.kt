@@ -4,6 +4,25 @@ class IntegralSimpson(workDirPath: String, userFunClassName: String, userFunName
                       methodIn: Method? = null, onLineLibIn: Any? = null
                      ) : IntegralBase(workDirPath, userFunClassName, userFunName, methodIn, onLineLibIn) {
 
+    private var simpsonUserFun: String? = null
+    private val simpsonUserFunClassName: String = "SimpsonOnLineLib"
+    private val simpsonUserFunFileName: String = "SimpsonOnLineLib.kt"
+    private val simpsonUserFunName: String = "userFun"
+    private var simpsonCompileMessage: String = ""
+
+    fun setSimpsonUserFun(rectUserFunIn: String?) {
+        this.simpsonUserFun = rectUserFunIn
+        val cuf = CompileUserFun(simpsonUserFun!!, workDirPath, simpsonUserFunFileName, simpsonUserFunClassName)
+        cuf.compile()
+        simpsonCompileMessage = cuf.compileMessage
+
+        userFunClassName = simpsonUserFunClassName
+        userFunName = simpsonUserFunName
+
+        loadOnLineLib()
+    }
+
+
     fun simpsonOneStep(A: Double, B: Double, oneStep: Double) {
         var thisOneStep: Double = oneStep
         var thisCntSteps: Int = ((B - A)/thisOneStep).toInt()
