@@ -7,11 +7,11 @@ fun main(args: Array<String>) {
 
     val simpsonUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
 
-    integrals.simpson.setSimpsonUserFun(simpsonUserFun)
+    //integrals.simpson.setSimpsonUserFun(simpsonUserFun)
 
 
-    //integrals.simpson.simpsonOneStep(1.2, 2.0, 0.000701)
-    integrals.simpson.simpsonOneStep(10.0, 100.0, 0.00002)
+    integrals.simpson.simpsonOneStep(1.2, 2.0, 0.000701)
+    //integrals.simpson.simpsonOneStep(10.0, 100.0, 0.00002)
     //integrals.simpson.arrayPrint()
     println(integrals.simpson.messages)
     integrals.simpson.messages = ""
@@ -19,8 +19,8 @@ fun main(args: Array<String>) {
     integrals.simpson.result = null
     println("-----------------------------------------------------")
 
-//    integrals.simpson.simpsonSteps(1.2, 2.0, 1142)
-    integrals.simpson.simpsonSteps(10.0, 100.0, 4500000)
+    integrals.simpson.simpsonSteps(1.2, 2.0, 1142)
+//    integrals.simpson.simpsonSteps(10.0, 100.0, 4500000)
     //integrals.simpson.arrayPrint(5,5)
     println(integrals.simpson.messages)
     integrals.simpson.messages = ""
@@ -31,10 +31,10 @@ fun main(args: Array<String>) {
 
     val trapezesUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
 
-    integrals. trapezes.setTrapezesUserFun(trapezesUserFun)
+//    integrals. trapezes.setTrapezesUserFun(trapezesUserFun)
 
-//    integrals.trapezes.trapezesOneStep(1.2, 2.0, 0.000701)
-    integrals.trapezes.trapezesOneStep(10.0, 100.0, 0.00002)
+    integrals.trapezes.trapezesOneStep(1.2, 2.0, 0.000701)
+//    integrals.trapezes.trapezesOneStep(10.0, 100.0, 0.00002)
     //integrals.trapezes.arrayPrint()
     println(integrals.trapezes.messages)
     integrals.trapezes.messages = ""
@@ -43,9 +43,9 @@ fun main(args: Array<String>) {
     println("-----------------------------------------------------")
 
 
-//    integrals.trapezes.trapezesSteps(1.2, 2.0, 1142)
     //integrals.trapezes.rndToSign = 100000000000000000000.0
-    integrals.trapezes.trapezesSteps(10.0, 100.0, 4500000)
+    integrals.trapezes.trapezesSteps(1.2, 2.0, 1142)
+    //integrals.trapezes.trapezesSteps(10.0, 100.0, 4500000)
     //integrals.trapezes.arrayPrint( lastVal = 10 )
     println(integrals.trapezes.messages)
     integrals.trapezes.messages = ""
@@ -56,10 +56,10 @@ fun main(args: Array<String>) {
 
     val middleRectUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
 
-    integrals.middleRect.setMiddleRectUserFun(middleRectUserFun)
+//    integrals.middleRect.setMiddleRectUserFun(middleRectUserFun)
 
-//    integrals.middleRect.middleRectOneStep(1.2, 2.0, 0.000701)
-    integrals.middleRect.middleRectOneStep(10.0, 100.0, 0.00002)
+    integrals.middleRect.middleRectOneStep(1.2, 2.0, 0.000701)
+//    integrals.middleRect.middleRectOneStep(10.0, 100.0, 0.00002)
     //integrals.middleRect.arrayPrint()
     println(integrals.middleRect.messages)
     integrals.middleRect.messages = ""
@@ -68,9 +68,9 @@ fun main(args: Array<String>) {
     println("-----------------------------------------------------")
 
 
-//    integrals.middleRect.middleRectSteps(1.2, 2.0, 1142)
+    integrals.middleRect.middleRectSteps(1.2, 2.0, 1142)
     //integrals.middleRect.rndToSign = 100000000000000000000.0
-    integrals.middleRect.middleRectSteps(10.0, 100.0, 4500000)
+//    integrals.middleRect.middleRectSteps(10.0, 100.0, 4500000)
     //integrals.middleRect.arrayPrint( 5, 5 )
     println(integrals.middleRect.messages)
     integrals.middleRect.messages = ""
@@ -79,12 +79,12 @@ fun main(args: Array<String>) {
     println("-----------------------------------------------------")
 
 
-    val rectUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
+//    val rectUserFun = "2.0 * pow(x, 2.0) + 3.0 * x + 5.1"
 
-    integrals.rect.setRectUserFun(rectUserFun)
+//    integrals.rect.setRectUserFun(rectUserFun)
 
-    //integrals.rect.rectOneStep(1.2, 2.0, 0.000701)
-    integrals.rect.rectOneStep(10.0, 100.0, 0.00002)
+    integrals.rect.rectOneStep(1.2, 2.0, 0.000701)
+    //integrals.rect.rectOneStep(10.0, 100.0, 0.00002)
     //integrals.rect.arrayPrint()
     println(integrals.rect.messages)
     integrals.rect.messages = ""
@@ -93,8 +93,8 @@ fun main(args: Array<String>) {
     println("-----------------------------------------------------")
 
 
-//    integrals.rect.rectSteps(1.2, 2.0, 1142)
-    integrals.rect.rectSteps(10.0, 100.0, 4500000)
+    integrals.rect.rectSteps(1.2, 2.0, 1142)
+//    integrals.rect.rectSteps(10.0, 100.0, 4500000)
     //integrals.rect.arrayPrint( 5, 5 )
     println(integrals.rect.messages)
     integrals.rect.messages = ""
