@@ -38,9 +38,11 @@ class CompileUserFun(private val userFun: String, private val workDirPath: Strin
     private fun userFunClassFileWrite(strFunIn: String): Int {
         val strFun = strFunIn.trim()
         val file = File(workDirPath + userFunFileName)
-        val s = file.readText(Charsets.UTF_8)
         val sBuild = userFunClassBuild(strFun)
-        if (s == sBuild) return 1
+        if (file.exists()) {
+            val s = file.readText(Charsets.UTF_8)
+            if (s == sBuild) return 1
+        }
         if (file.exists()) file.delete()
         file.writeText(sBuild, Charsets.UTF_8)
 
