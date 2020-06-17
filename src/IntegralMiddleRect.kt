@@ -29,12 +29,12 @@ class IntegralMiddleRect(workDirPath: String, userFunClassName: String, userFunN
         var thisSteps: Int = cntSteps
         var oneStep: Double = rnd((B - A)/thisSteps)
 
-        if (thisSteps % 2.0 != 0.0) {
-            thisSteps++
+        if (thisSteps % 2.0 == 0.0) {
+            thisSteps--
             oneStep = rnd((B - A)/thisSteps)
-            messages += "Колличество шагов было увеличено до четного $thisSteps\n"
+            messages += "Колличество шагов было увеличено до четного ${thisSteps+1}\n"
         }
-        messages+="steps=$thisSteps, oneStep=$oneStep\n"
+        messages+="steps=${thisSteps+1}, oneStep=$oneStep\n"
 
         fillPreValues(thisSteps, oneStep, A, B)
 
@@ -46,12 +46,12 @@ class IntegralMiddleRect(workDirPath: String, userFunClassName: String, userFunN
         var thisOneStep = oneStep
         var thisSteps = rnd((B - A)/oneStep).toInt()
 
-        if (thisSteps % 2.0 != 0.0) {
-            thisSteps++
+        if (thisSteps % 2.0 == 0.0) {
+            thisSteps--
             thisOneStep = rnd((B - A)/thisSteps)
-            messages += "Колличество шагов было увеличено до четного $thisSteps\n"
+            messages += "Колличество шагов было увеличено до четного ${thisSteps+1}\n"
         }
-        messages+="steps=$thisSteps, oneStep=$oneStep\n"
+        messages+="steps=${thisSteps+1}, oneStep=$oneStep\n"
 
         fillPreValues(thisSteps, thisOneStep, A, B)
 
@@ -63,9 +63,9 @@ class IntegralMiddleRect(workDirPath: String, userFunClassName: String, userFunN
         var x = 0.0
         var i = 0
 
-        while (i < cntSteps) {
+        while (i <= cntSteps) {
 
-            if (i == cntSteps - 1){
+            if (i == cntSteps){
                 thisOneStep = rnd(B - x)
                 x += thisOneStep
                 messages+="в последней итерации $i шаг $oneStep был приведен к $thisOneStep\n"

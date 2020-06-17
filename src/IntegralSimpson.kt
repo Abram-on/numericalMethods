@@ -30,12 +30,12 @@ class IntegralSimpson(workDirPath: String, userFunClassName: String, userFunName
 
         y.clear()
 
-        if (thisCntSteps % 2.0 != 0.0) {
-            thisCntSteps ++
+        if (thisCntSteps % 2.0 == 0.0) {
+            thisCntSteps --
             messages += "Колличество шагов было увеличено до четного $thisCntSteps\n"
             thisOneStep = rnd((B - A)/thisCntSteps)
         }
-        messages+="steps=$thisCntSteps, oneStep=$thisOneStep\n"
+        messages+="steps=${thisCntSteps + 1}, oneStep=$thisOneStep\n"
 
         fillPreValues(thisCntSteps, thisOneStep, A, B)
 
@@ -49,10 +49,10 @@ class IntegralSimpson(workDirPath: String, userFunClassName: String, userFunName
 
         y.clear()
 
-        if (thisCntSteps % 2.0 != 0.0) {
-            thisCntSteps++
+        if (thisCntSteps % 2.0 == 0.0) {
+            thisCntSteps--
             thisOneStep = rnd((B - A)/thisCntSteps)
-            messages += "Колличество шагов было увеличено до четного $thisCntSteps\n"
+            messages += "Колличество шагов было увеличено до четного ${thisCntSteps+1}\n"
         }
         messages+="steps=$thisCntSteps, oneStep=$thisOneStep\n"
 
@@ -96,11 +96,11 @@ class IntegralSimpson(workDirPath: String, userFunClassName: String, userFunName
     private fun sumResult(A: Double, B: Double): Double{
         var sm = 0.0
         var i = 0
-        while (i < y.size) {
+        while (i < y.size ) {
             sm += (y[i]!!.fx * y[i]!!.k)
             i ++
         }
-        val k: Double = rnd((B - A)/(y.size - 1))/3.0
+        val k: Double = rnd(((B - A)/(y.size))/3.0)
         return rnd(k * sm)
     }
 }

@@ -31,8 +31,10 @@ abstract class IntegralBase(protected var workDirPath: String, protected var use
     }
 
     fun arrayPrint(firstVal: Int = 0, lastVal: Int = 0){
-        var i = y.keys.first()
-        val i_max = y.keys.last()
+//        var i = y.keys.first()
+//        val i_max = y.keys.last()
+        var i = 0
+        val i_max = y.size - 1
 
         if (firstVal == 0 && lastVal == 0) {
             while (i <=  i_max) {
@@ -47,6 +49,7 @@ abstract class IntegralBase(protected var workDirPath: String, protected var use
                 i++
             }
         }
+        print("\ni=$i, i_max=$i_max size=${y.size}\n")
     }
 
     protected fun loadOnLineLib(){
